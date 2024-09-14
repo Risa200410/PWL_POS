@@ -12,7 +12,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LevelController;
-
+use App\Models\User;
 
 Route::get('/user', [UserController::class,
 'user']);
@@ -83,3 +83,4 @@ Route::get('/', function(){
 // PERTEMUAN 3
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
