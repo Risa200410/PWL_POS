@@ -10,6 +10,8 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\LevelController;
+
 
 Route::get('/user', [UserController::class,
 'user']);
@@ -71,3 +73,9 @@ Route::get('/home', [HomeController::class,
 
 Route::get('/penjualan', [TransaksiController::class,
 'transaksi']);
+
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::get('/level', [LevelController::class, 'index']);
