@@ -21,13 +21,13 @@ class UserController extends Controller
         // return view('Pertemuan3.user', ['data' => $user]);
 
         // tambah data user dengan Eloquent Model
-        $data = [
-            'username' => 'manager_3',
-            'nama' => 'Manager 3',
-            'password' => Hash::make('12345'),
-            'level_id' => 2
-        ];
-        UserModel::create($data); // tambahkan data ke tabel m_user
+        // $data = [
+        //     'username' => 'manager_3',
+        //     'nama' => 'Manager 3',
+        //     'password' => Hash::make('12345'),
+        //     'level_id' => 2
+        // ];
+        // UserModel::create($data); // tambahkan data ke tabel m_user
 
         // tambah data user dengan Eloquent Model
         // $data = [
@@ -36,7 +36,9 @@ class UserController extends Controller
         // UserModel::where('username', 'customer-1')->update($data); // update data user        
 
         // coba akses model UserModel
-        $user = UserModel::all(); // ambil semua data dari tabel m_user
+        $user = UserModel::findOr(20, ['username', 'nama'], function(){
+            abort(404);
+        }); // ambil semua data dari tabel m_user
         return view('Pertemuan3.user', ['data' => $user]);
     }
 }
