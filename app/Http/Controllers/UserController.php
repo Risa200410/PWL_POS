@@ -100,8 +100,14 @@ class UserController extends Controller
         // dd($user->wasChanged(['nama', 'username'])); // true
 
         // PRAKTIKUM 2.6.2
-        $user = UserModel::all();
-        return view('Pertemuan3.user', ['data' => $user]);
+        // $user = UserModel::all();
+        // return view('Pertemuan3.user', ['data' => $user]);
+
+        // P2 PRAKTIKUM 2.7
+        // $user = UserModel::with('level')->get();
+        // dd($user);
+        $user = UserModel::with('level')->get();
+        return view('user', ['data' => $user]);
     }
 
     // PRAKTIKUM 2.6.6
@@ -131,19 +137,21 @@ class UserController extends Controller
     }
 
     // PRAKTIKUM 2.6.16
-    public function ubah_simpan($id,Request $request){
-        $user=UserModel::find($id);
-            $user->username= $request->username;
-            $user->nama= $request->nama;
-            $user->password=Hash::make('$request->password');
-            $user->level_id= $request->level_id;
+    public function ubah_simpan($id, Request $request)
+    {
+        $user = UserModel::find($id);
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+        $user->password = Hash::make('$request->password');
+        $user->level_id = $request->level_id;
 
         return redirect('/user');
     }
 
     // PRAKTIKUM 2.6.19
-    public function hapus($id){
-        $user=UserModel::find($id);
+    public function hapus($id)
+    {
+        $user = UserModel::find($id);
         $user->delete();
 
         return redirect('/user');
