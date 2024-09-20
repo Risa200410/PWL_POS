@@ -13,6 +13,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LevelController;
 use App\Models\User;
+use Illuminate\Http\Request;
+// use App\Http\Kernel;
 
 Route::get('/user', [UserController::class,
 'user']);
@@ -84,3 +86,13 @@ Route::get('/', function(){
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class, 'index']);
+
+
+// PERTEMUAN 4
+
+Route::get('/user/tambah', [UserController::class, 'tambah']);
+Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
+Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
+Route::put('/user/ubah_simpan/{id}', [UserController :: class, 'ubah_simpan']);
+Route:: get('/user/hapus/{id}', [UserController :: class, 'hapus']);
+
