@@ -107,13 +107,14 @@ class UserController extends Controller
         // $user = UserModel::with('level')->get();
         // dd($user);
         $user = UserModel::with('level')->get();
-        return view('user', ['data' => $user]);
+        return view('Pertemuan4.user', ['data' => $user]);
     }
 
     // PRAKTIKUM 2.6.6
     public function tambah()
     {
         return view('user_tambah');
+        // return view('Pertemuan4.user_ubah');
     }
 
     // PRAKTIKUM 2.6.9
@@ -132,8 +133,14 @@ class UserController extends Controller
     // PRAKTIKUM 2.6.13
     public function ubah($id)
     {
+        // return view ("hello");
+        // var_dump($id);
+        // die();
         $user = UserModel::find($id);
-        return view('Pertemuan4.user_ubah', ['data' => $user]);
+        // var_dump($user);
+        // die();
+        return view('user_ubah', ['data' => $user]);
+        
     }
 
     // PRAKTIKUM 2.6.16
