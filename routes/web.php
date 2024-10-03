@@ -39,23 +39,35 @@ use App\Http\Controllers\BarangController;
 
 // Route::get('/user', [UserController::class, 'user']);
 
-Route::get('/food-beverage', [CategoryController::class,
-'foodBeverage']);
+Route::get('/food-beverage', [
+    CategoryController::class,
+    'foodBeverage'
+]);
 
-Route::get('/beauty-health', [CategoryController::class,
-'beautyhealth']);
+Route::get('/beauty-health', [
+    CategoryController::class,
+    'beautyhealth'
+]);
 
-Route::get('/home-care', [CategoryController::class,
-'homecare']);
+Route::get('/home-care', [
+    CategoryController::class,
+    'homecare'
+]);
 
-Route::get('/baby-kid', [CategoryController::class,
-'babykid']);
+Route::get('/baby-kid', [
+    CategoryController::class,
+    'babykid'
+]);
 
-Route::get('/home', [HomeController::class,
-'home']);
+Route::get('/home', [
+    HomeController::class,
+    'home'
+]);
 
-Route::get('/penjualan', [TransaksiController::class,
-'transaksi']);
+Route::get('/penjualan', [
+    TransaksiController::class,
+    'transaksi'
+]);
 
 /* Route::get('/', function(){
     return view('welcome');
@@ -78,7 +90,7 @@ Route::put('/user/ubah_simpan/{id}', [UserController::class,'ubah_simpan']);
 Route::get('/user/hapus/{id}', [UserController::class,'hapus']); */
 
 // PERTEMUAN 5
-Route::get ('/', [WelcomeController :: class,'index']);
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', [UserController::class, 'index']);          // menampilkan halaman awal user
@@ -91,9 +103,11 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
     Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
     Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
+    Route::get('/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // Menampilkan halaman form edit user Ajax
+    Route::put('/{id}/update_ajax', [UserController::class, 'update_ajax']); // Menyimpan perubahan data user Ajax
 });
 
-Route::group(['prefix' => 'level'], function(){
+Route::group(['prefix' => 'level'], function () {
     Route::get('/', [LevelController::class, 'index']); //menampilkan halaman awal user
     Route::post('/list', [LevelController::class, 'list']); //menampilkan dta user dalam bentuk json untuk datatables
     Route::get('/create', [LevelController::class, 'create']); //menampilkan halaman form tambah user
@@ -104,7 +118,7 @@ Route::group(['prefix' => 'level'], function(){
     Route::delete('{id}', [LevelController::class, 'destroy']); //menghapus data user
 });
 
-Route::group(['prefix' => 'kategori'], function(){
+Route::group(['prefix' => 'kategori'], function () {
     Route::get('/', [KategoriController::class, 'index']); //menampilkan halaman awal user
     Route::post('/list', [KategoriController::class, 'list']); //menampilkan dta user dalam bentuk json untuk datatables
     Route::get('/create', [KategoriController::class, 'create']); //menampilkan halaman form tambah user
@@ -115,7 +129,7 @@ Route::group(['prefix' => 'kategori'], function(){
     Route::delete('{id}', [KategoriController::class, 'destroy']); //menghapus data user
 });
 
-Route::group(['prefix' => 'supplier'], function(){
+Route::group(['prefix' => 'supplier'], function () {
     Route::get('/', [SupplierController::class, 'index']); //menampilkan halaman awal user
     Route::post('/list', [SupplierController::class, 'list']); //menampilkan dta user dalam bentuk json untuk datatables
     Route::get('/create', [SupplierController::class, 'create']); //menampilkan halaman form tambah user
@@ -126,7 +140,7 @@ Route::group(['prefix' => 'supplier'], function(){
     Route::delete('{id}', [SupplierController::class, 'destroy']); //menghapus data user
 });
 
-Route::group(['prefix' => 'barang'], function(){
+Route::group(['prefix' => 'barang'], function () {
     Route::get('/', [BarangController::class, 'index']); //menampilkan halaman awal user
     Route::post('/list', [BarangController::class, 'list']); //menampilkan dta user dalam bentuk json untuk datatables
     Route::get('/create', [BarangController::class, 'create']); //menampilkan halaman form tambah user
