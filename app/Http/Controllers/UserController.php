@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use App\Models\LevelModel;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -38,8 +39,8 @@ class UserController extends Controller
         // Filter data user berdasarkan level_id
         if ($request->level_id) {
             $users->where('level_id', $request->level_id);
-        } 
-        
+        }
+
         return DataTables::of($users)
             // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addIndexColumn()
@@ -77,7 +78,7 @@ class UserController extends Controller
     //Menyimpan data user baru
     public function store(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             //username harus diisi berupa string minimal 3 karakter dan bernilai unik di tabel m_user kolom username
             'username' => 'required|string|min:3|unique:m_user,username',
             'nama' => 'required|string|max:100',
@@ -97,7 +98,7 @@ class UserController extends Controller
     //Menampilkan detail user 
     public function show(string $id)
     {
-        $user = UserModel::with ('level')->find($id);
+        $user = UserModel::with('level')->find($id);
 
         $breadcrumb = (object) [
             'title' => 'Detail User',
@@ -109,7 +110,7 @@ class UserController extends Controller
         ];
 
         $activeMenu = 'user'; //set menu yang sedang aktif
-        
+
         return view('user.show', ['breadcrumb' =>  $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
@@ -140,10 +141,10 @@ class UserController extends Controller
             // username harus diisi, berupa string, minimal 3 karakter,
             // dan bernilai unik di tabel m_user kolom username kecuali untuk user dengan id yang sedang diedit
             'username'  => 'required|string|min:3|unique:m_user,username,' . $id . ',user_id',
-            'nama'      => 'required|string|max:100', 
+            'nama'      => 'required|string|max:100',
             'password'  => 'nullable|min:5',
             'level_id'  => 'required|integer',
-        ]);        
+        ]);
         UserModel::find($id)->update([
             'username' => $request->username,
             'nama' => $request->nama,
@@ -158,14 +159,59 @@ class UserController extends Controller
     {
         $user = UserModel::find($id); // Cari data user berdasarkan ID
         if (!$user) {
-            return redirect('/user') ->with('error', 'Data user tidak ditemukan');
+            return redirect('/user')->with('error', 'Data user tidak ditemukan');
         }
-        try{
+        try {
             UserModel::destroy($id); //Hapus data level
 
             return redirect('/user')->with('success', 'Data user berhasil dihapus');
-        }catch (\Illuminate\Database\QueryException $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             return redirect('/user')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
+    }
+
+    // P6 P1 (membuat user ajax)
+    public function create_ajax()
+    {
+        $level = LevelModel::select('level_id', 'level_nama')->get();
+
+        return view('user.create_ajax')
+            ->with('level', $level);
+    }
+
+    public function store_ajax(Request $request)
+    {
+        // cek apakah request berupa ajax
+        if ($request->ajax() || $request->wantsJson()) {
+            $rules = [
+                'level_id' => 'required| integer',
+                'username' => 'required | string | min: 3 | unique:m_user, username',
+                'nama' => 'required | string | max:100',
+                'password' => 'required |min:6'
+
+
+
+            ];
+
+            // use Illuminate\SupportFacades\Validator;
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false, // response status, false: error/gagal, true: berhasil
+                    'message' => 'Validasi Gagal',
+                    'msgField' => $validator->errors(), // pesan error validasi
+
+                ]);
+            }
+
+            UserModel::create($request->all());
+            return response()->json([
+                'status' => true,
+                'message' => 'Data user berhasil disimpan'
+
+            ]);
+        }
+        redirect('/');
     }
 }
