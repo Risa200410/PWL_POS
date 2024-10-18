@@ -4,10 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
@@ -16,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegistrationController;
+
 
 
 
@@ -33,46 +31,6 @@ use App\Http\Controllers\AuthController;
 /* Route::get('/', function () {
     return view('welcome');
 }); */
-
-// SOAL PRAKTIKUM
-
-// Route::get('/user/{id}/{nama}', [UserController::class, 'User']);
-
-// Route::get('/user', [UserController::class, 'user']);
-
-// Route::get('/food-beverage', [
-//     CategoryController::class,
-//     'foodBeverage'
-// ]);
-
-// Route::get('/beauty-health', [
-//     CategoryController::class,
-//     'beautyhealth'
-// ]);
-
-// Route::get('/home-care', [
-//     CategoryController::class,
-//     'homecare'
-// ]);
-
-// Route::get('/baby-kid', [
-//     CategoryController::class,
-//     'babykid'
-// ]);
-
-// Route::get('/home', [
-//     HomeController::class,
-//     'home'
-// ]);
-
-// Route::get('/penjualan', [
-//     TransaksiController::class,
-//     'transaksi'
-// ]);
-
-// /* Route::get('/', function(){
-//     return view('welcome');
-// }); */
 
 
 // PERTEMUAN 3
@@ -97,6 +55,8 @@ Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id}, maka harus
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('register', [RegistrationController::class, 'registration'])->name('register');
+Route::post('register', [RegistrationController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () { // artinya semua route di dalam group ini harus login dulu
 
