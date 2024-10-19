@@ -103,6 +103,8 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
         Route::get('/barang/create_ajax', [BarangController::class, 'create_ajax']);
         Route::post('/barang', [BarangController::class, 'store']);         // menyimpan data barang baru
         Route::post('/barang/ajax', [BarangController::class, 'store_ajax']);
+        Route::get('/barang/import', [BarangController::class, 'import']); // ajax form upload excel
+        Route::post('/barang/import_ajax', [BarangController::class, 'import_ajax']); //ajax import excel
         Route::get('/barang/{id}', [BarangController::class, 'show']);       // menampilkan detail barang
         Route::get('/barang/{id}/edit', [BarangController::class, 'edit']);  // menampilkan halaman form edit barang
         Route::put('/barang/{id}', [BarangController::class, 'update']);     // menyimpan perubahan data barang
@@ -111,6 +113,7 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
         Route::get('/barang/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
         Route::delete('/barang/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
         Route::delete('/barang/{id}', [BarangController::class, 'destroy']); // menghapus data barang
+        
     });
 
     Route::middleware(['authorize:ADM,MNG'])->group(function () {
