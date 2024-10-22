@@ -61,16 +61,20 @@ Route::get('/user/hapus/{id}', [UserController::class,'hapus']); */
 
 Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id}, maka harus berupa angka
 
+Route::get('landing', [LandingPageController::class, 'index'])->name('landing');
+// Route::get('landing', [LandingPageController::class, 'index'])->name('landing');
+
+
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('register', [RegistrationController::class, 'registration'])->name('register');
 Route::post('register', [RegistrationController::class, 'store']);
 
-Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('/', [LandingPageController::class, 'index']);                          //menampilkan laman awal user
+// Route::group(['prefix' => 'dashboard'], function () {
+//     Route::get('/', [LandingPageController::class, 'index']);                          //menampilkan laman awal user
+// });
 
-});
 
 Route::middleware(['auth'])->group(function () { // artinya semua route di dalam group ini harus login dulu
 
@@ -208,21 +212,21 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
     });
 
 
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('/', [UserController::class, 'index']);          // menampilkan halaman awal user
-        Route::post('/list', [UserController::class, 'list']);      // menampilkan data user dalam bentuk json untuk datatables
-        Route::get('/create', [UserController::class, 'create']);   // menampilkan halaman form tambah user
-        Route::post('/', [UserController::class, 'store']);         // menyimpan data user baru
-        Route::get('/create_ajax', [UserController::class, 'create_ajax']);   // menampilkan halaman form tambah user ajax
-        Route::post('/ajax', [UserController::class, 'store_ajax']);         // menyimpan data user baru ajax
-        Route::get('/{id}', [UserController::class, 'show']);       // menampilkan detail user
-        Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
-        Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
-        Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
-        Route::get('/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // Menampilkan halaman form edit user Ajax
-        Route::put('/{id}/update_ajax', [UserController::class, 'update_ajax']); // Menyimpan perubahan data user Ajax
-        Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete user Ajax
-        Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // Untuk hapus data user Ajax
+    Route::middleware(['authorize:ADM,MNG'])->group(function () {
+        Route::get('/user', [UserController::class, 'index']);          // menampilkan halaman awal user
+        Route::post('/user/list', [UserController::class, 'list']);      // menampilkan data user dalam bentuk json untuk datatables
+        Route::get('/user/create', [UserController::class, 'create']);   // menampilkan halaman form tambah user
+        Route::post('/user', [UserController::class, 'store']);         // menyimpan data user baru
+        Route::get('/user/create_ajax', [UserController::class, 'create_ajax']);   // menampilkan halaman form tambah user ajax
+        Route::post('/user/ajax', [UserController::class, 'store_ajax']);         // menyimpan data user baru ajax
+        Route::get('/user/{id}', [UserController::class, 'show']);       // menampilkan detail user
+        Route::get('/user/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
+        Route::put('/user/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
+        Route::delete('/user/{id}', [UserController::class, 'destroy']); // menghapus data user
+        Route::get('/user/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // Menampilkan halaman form edit user Ajax
+        Route::put('/user/{id}/update_ajax', [UserController::class, 'update_ajax']); // Menyimpan perubahan data user Ajax
+        Route::get('/user{id}/delete_ajax', [UserController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete user Ajax
+        Route::delete('/user/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // Untuk hapus data user Ajax
         Route::get('/user/import', [UserController::class, 'import']);
         Route::post('/user/import_ajax', [UserController::class, 'import_ajax']);
         Route::get('/user/export_excel', [UserController::class, 'export_excel']); // export excel

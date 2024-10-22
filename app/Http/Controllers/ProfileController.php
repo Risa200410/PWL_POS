@@ -107,7 +107,7 @@ class ProfileController extends Controller
         // cek apakah request dari ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'foto'   => 'required|mimes:jpeg,png,jpg|max:4096'
+                'avatar'   => 'required|mimes:jpeg,png,jpg|max:4096'
             ];
             // use Illuminate\Support\Facades\Validator;
             $validator = Validator::make($request->all(), $rules);
@@ -120,31 +120,31 @@ class ProfileController extends Controller
             }
             $check = UserModel::find($id);
             if ($check) {
-                if ($request->has('foto')) {
+                if ($request->has('avatar')) {
 
-                    if (isset($check->foto)) {
-                        $fileold = $check->foto;
+                    if (isset($check->avatar)) {
+                        $fileold = $check->avatar;
                         if (Storage::disk('public')->exists($fileold)) {
                             Storage::disk('public')->delete($fileold);
                         }
-                        $file = $request->file('foto');
-                        $filename = $check->foto;
-                        $path = 'image/';
+                        $file = $request->file('avatar');
+                        $filename = $check->avatar;
+                        $path = 'image/profile/';
                         $file->move($path, $filename);
                         $pathname = $filename;
                     } else {
-                        $file = $request->file('foto');
+                        $file = $request->file('avatar');
                         $extension = $file->getClientOriginalExtension();
 
                         $filename = time() . '.' . $extension;
 
-                        $path = 'image/';
+                        $path = 'image/profile/';
                         $file->move($path, $filename);
                         $pathname = $path . $filename;
                     }
                 }
                 $check->update([
-                    'foto'      => $pathname
+                    'avatar'      => $pathname
                 ]);
                 return response()->json([
                     'status' => true,

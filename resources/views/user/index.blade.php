@@ -6,9 +6,12 @@
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
                 <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-info">Import user</button>
-                <a href="{{ url('/user/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export user (excel)</a>
-                <a href="{{ url('/user/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export user(pdf)</a>
-                <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button>
+                <a href="{{ url('/user/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export user
+                    (excel)</a>
+                <a href="{{ url('/user/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
+                    user(pdf)</a>
+                <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-success">Tambah Data
+                    (Ajax)</button>
             </div>
         </div>
         <div class="card-body">
@@ -41,6 +44,7 @@
                         <th>Username</th>
                         <th>Nama</th>
                         <th>Level Pengguna</th>
+                        <th>Avatar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -100,6 +104,22 @@
                         className: "",
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: "avatar",
+                        className: "",
+                        width: "14%",
+                        orderable: false,
+                        searchable: false,
+                        "render": function(data) {
+                            // Check if data exists
+                            if (data) {
+                                return '<img src="{{ asset('') }}/' + data +
+                                    '" width="50px" alt="User Photo"/>';
+                            }
+                            return 'Avatar Kosong'; // Return empty if no data
+
+                        }
                     },
                     {
                         data: "aksi",

@@ -41,7 +41,7 @@ class UserModel extends Authenticatable
      * @var array
      */
     // protected $fillable = ['level_id', 'username', 'nama', 'password'];
-    protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'updated_at'];
+    protected $fillable = ['username', 'password', 'nama', 'level_id', 'avatar', 'created_at', 'updated_at'];
 
     protected $hidden = ['password'];
     protected $casts = ['password' => 'hashed'];
