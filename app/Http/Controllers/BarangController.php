@@ -424,7 +424,7 @@ class BarangController extends Controller
         $pdf->render();
 
         return $pdf->stream('Data Barang ' . date('Y-m-d H:i:s') . '.pdf');
-        ini_set (set_time_limit(3600), 3600);
+        // ini_set (set_time_limit(3600), 3600);
 
     }
 }
