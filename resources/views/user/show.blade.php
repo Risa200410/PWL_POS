@@ -34,6 +34,10 @@
                     <th>Password</th>
                     <td>********</td>
                 </tr>
+                <tr>
+                    <th>Foto</th>
+                    <td><img src=" {{ asset($user->foto) }} " height="100" alt="Foto Kosong"></td>
+                </tr>
             </table>
         @endempty
         
