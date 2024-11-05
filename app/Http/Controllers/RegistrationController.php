@@ -14,6 +14,7 @@ class RegistrationController extends Controller
         return view('auth.signup')
                     ->with('level', $level);
     }
+    
     //Menyimpan data user baru
     public function store(Request $request)
     {

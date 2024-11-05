@@ -14,12 +14,27 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <style>
+        .login-box {
+            background-color: #9dedf1; /* White background for the login box */
+            border-radius: 10px; /* Optional: rounded corners for the login box */
+            padding: 20px; /* Optional: padding inside the login box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow for a subtle effect */
+        }
+        .card{
+            background-color: #efefef; /* White background for the login box */
+        }
+        .hold-transition{
+            background-color: #9dedf1; /* White background for the login box */
+
+        }
+    </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
-        <div class="card-header text-center"><a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a></div>
+        <div class="card-header text-center"><a href="{{ url('/') }}" class="h1"><b>Risa Plaza Market</b></a></div>
             <div class="card-body">
                 <p class="login-box-msg">Sign up to create your account</p>
                 <form action="{{ url('signup') }}" method="POST" id="form-tambah">

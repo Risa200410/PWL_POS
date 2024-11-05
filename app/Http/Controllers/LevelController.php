@@ -63,6 +63,7 @@ class LevelController extends Controller
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
             ->make(true);
     }
+
     // Menampilkan halaman form tambah level 
     public function create()
     {
@@ -76,6 +77,7 @@ class LevelController extends Controller
         $activeMenu = 'level'; // set menu yang sedang aktif
         return view('level.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
+
     // Menyimpan data level baru
     public function store(Request $request)
     {
@@ -90,6 +92,7 @@ class LevelController extends Controller
         ]);
         return redirect('/level')->with('success', 'Data level berhasil disimpan');
     }
+
     // Menampilkan detail user
     public function show(string $id)
     {
@@ -99,6 +102,7 @@ class LevelController extends Controller
         $activeMenu = 'level'; // set menu yang sedang aktif
         return view('level.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
+
     // Menampilkan halaman fore edit level 
     public function edit(string $id)
     {
@@ -113,6 +117,7 @@ class LevelController extends Controller
         $activeMenu = 'level'; // set menu yang sedang aktif
         return view('level.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
+
     // Menyimpan perubahan data user
     public function update(Request $request, string $id)
     {
@@ -128,6 +133,7 @@ class LevelController extends Controller
         ]);
         return redirect('/level')->with("success", "Data level berhasil diubah");
     }
+
     // Menghapus data level
     public function destroy(string $id)
     {
@@ -353,6 +359,5 @@ class LevelController extends Controller
             $pdf->setOption("isRemoteEnabled", true); // set true jika ada gambar dari url $pdf->render();
             return $pdf->stream('Data level' . date('Y-m-d H:i:s') . '.pdf');
         }
-    
 
 }

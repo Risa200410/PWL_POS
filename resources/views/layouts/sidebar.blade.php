@@ -1,4 +1,6 @@
 <div class="sidebar">
+    <!-- CSS -->
+    
     <!-- SidebarSearch Form -->
     <div class="form-inline mt-2">
         <div class="input-group" data-widget="sidebar-search">
@@ -72,8 +74,8 @@
                 </a>
             </li>
 
-             <!-- Menambahkan Menu Logout -->
-             <li class="nav-item">
+            <!-- Menambahkan Menu Logout -->
+            <li class="nav-item">
                 <a href="{{ url('logout') }}" class="nav-link"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>

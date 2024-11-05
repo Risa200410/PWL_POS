@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    // menampilkan halaman profil pengguna
     public function index()
     {
         $id = session('user_id');
@@ -26,6 +27,7 @@ class ProfileController extends Controller
         return view('profile.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
+    // menampilkan detail informasi pengguna
     public function show(string $id)
     {
         $user = UserModel::with('level')->find($id);
@@ -35,6 +37,7 @@ class ProfileController extends Controller
         return view('user.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
+    // menampilkan form ajax edit pengguna
     public function edit_ajax(string $id)
     {
         $user = UserModel::find($id);
@@ -42,6 +45,7 @@ class ProfileController extends Controller
         return view('profile.edit_ajax', ['user' => $user, 'level' => $level]);
     }
 
+    // memperbarui data denga fungsi ajax
     public function update_ajax(Request $request, $id)
     {
         // cek apakah request dari ajax

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +10,71 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .navbar {
             background-color: #9dedf1;
             padding: 10px 20px;
         }
+
         .navbar-brand {
-            color: white !important;
+            color: rgb(4, 6, 18) !important;
             font-size: 24px;
             font-weight: bold;
         }
-        .btn-login, .btn-register {
+
+        .btn-login,
+        .btn-register {
             border-radius: 20px;
             margin-left: 10px;
             color: white;
             padding: 5px 15px;
         }
+
         .btn-login {
-            background-color: #007bff;
+            background-color: #0b7ed1;
         }
+
         .btn-register {
-            background-color: #9dedf1;
+            background-color: #0b7ed1;
         }
+
         .promo-banner {
             width: 100%;
             max-height: 500px;
             object-fit: cover;
             margin-top: 20px;
         }
+
         .promo-container {
             text-align: center;
             background-color: white;
             padding: 20px;
             border-bottom: 2px solid #9dedf1;
         }
+
         .promo-title {
             font-size: 24px;
             font-weight: bold;
             color: #9dedf1;
             margin-top: 20px;
         }
-        .description-container, .about-us-container {
+
+        .description-container,
+        .about-us-container {
             padding: 40px 0;
             background-color: #f9f9f9;
         }
-        .description-title, .about-title {
+
+        .description-title,
+        .about-title {
             font-size: 28px;
             color: #007bff;
             font-weight: bold;
             text-align: center;
         }
-        .description-text, .about-text {
+
+        .description-text,
+        .about-text {
             font-size: 18px;
             color: #333;
             text-align: center;
@@ -66,6 +82,7 @@
             max-width: 800px;
             line-height: 1.6;
         }
+
         footer {
             background-color: #9dedf1;
             color: white;
@@ -73,10 +90,13 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
+        <img src="adminlte/dist/img/logoRisa.png" alt="Logo Risa Plaza"
+            style="width: 40px; height: 40px; margin-right: 10px;">
         <a class="navbar-brand" href="#">Risa Plaza Market</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
@@ -99,27 +119,36 @@
 
     <!-- Promo Information -->
     <div class="container text-center">
-        <h2 class="promo-title">My Super Trip for Frequent Spender</h2>
-        <p>
-            Holiday trip for 5 families to Malang Jatim Park 4 Days 3 Nights, Royal Carribean, Universal Studio Singapore, and many more exciting prizes!
+        <h2 class="promo-title"> 🎉 Promo Besar Plaza Mart! 🎉 </h2>
+        <p>Menangkan Liburan Tak Terlupakan untuk 5 keluarga ke Malang Jatim Park - 4 Hari 3 Malam, Royal Caribbean
         </p>
+        <p> Cruise, Universal Studios Singapura, dan masih banyak hadiah seru lainnya! 🎁🏖️🌍
+        </p>
+        <p>Belanja sekarang di Plaza Mart dan jadikan belanja Anda sebagai petualangan sekali seumur hidup!</p>
         <div>
-            <img src="adminlte/dist/img/diskon1.jpeg" alt="Promo 1" style="width: 100%; max-width: 300px; margin: 10px;">
-            <img src="adminlte/dist/img/diskon2.jpeg" alt="Promo 2" style="width: 100%; max-width: 300px; margin: 10px;">
-            <img src="adminlte/dist/img/diskon3.jpg" alt="Promo 3" style="width: 100%; max-width: 300px; margin: 10px;">
+            <img src="adminlte/dist/img/diskon1.jpeg" alt="Promo 1"
+                style="width: 100%; max-width: 300px; margin: 10px;">
+            <img src="adminlte/dist/img/diskon2.jpeg" alt="Promo 2"
+                style="width: 100%; max-width: 300px; margin: 10px;">
+            <img src="adminlte/dist/img/diskon3.jpg" alt="Promo 3"
+                style="width: 100%; max-width: 300px; margin: 10px;">
         </div>
     </div>
 
-    <!-- Store Description -->
+    {{-- <!-- Store Description -->
     <div class="description-container">
         <h2 class="description-title">Tentang Risa Plaza Market</h2>
         <p class="description-text">
-            Risa Plaza Market adalah supermarket modern yang menghadirkan produk berkualitas untuk kebutuhan sehari-hari. 
-            Kami berkomitmen memberikan pelayanan terbaik kepada pelanggan dengan menyediakan berbagai pilihan produk, mulai dari bahan makanan segar hingga kebutuhan rumah tangga lainnya. 
-            Dengan harga terjangkau dan berbagai promo menarik, Risa Plaza Market menjadi pilihan tepat bagi keluarga Anda. 
-            Nikmati pengalaman berbelanja yang menyenangkan di Risa Plaza Market dengan suasana yang nyaman dan produk-produk yang selalu segar.
+            Risa Plaza Market adalah supermarket modern yang menghadirkan produk berkualitas untuk kebutuhan
+            sehari-hari.
+            Kami berkomitmen memberikan pelayanan terbaik kepada pelanggan dengan menyediakan berbagai pilihan produk,
+            mulai dari bahan makanan segar hingga kebutuhan rumah tangga lainnya.
+            Dengan harga terjangkau dan berbagai promo menarik, Risa Plaza Market menjadi pilihan tepat bagi keluarga
+            Anda.
+            Nikmati pengalaman berbelanja yang menyenangkan di Risa Plaza Market dengan suasana yang nyaman dan
+            produk-produk yang selalu segar.
         </p>
-    </div>
+    </div> --}}
 
     <!-- About Us Section -->
     <div class="about-us-container">
@@ -127,9 +156,14 @@
         <p class="about-text">
             Selamat datang di Risa Plaza Market! <br><br>
 
-            Kami adalah perusahaan yang berdedikasi untuk menyediakan produk-produk berkualitas tinggi dengan harga yang terjangkau, serta layanan pelanggan yang ramah dan cepat. 
-            Berdiri sejak 2024, tujuan kami adalah membantu Anda menemukan solusi terbaik untuk kebutuhan sehari-hari melalui pilihan produk yang kami sediakan. 
-            Kami selalu berkomitmen untuk meningkatkan pengalaman belanja Anda dan terus berkembang bersama pelanggan setia kami. Terima kasih telah mempercayai Risa Plaza Market sebagai mitra belanja Anda!
+            Risa Plaza Market adalah supermarket modern yang menghadirkan produk berkualitas untuk kebutuhan
+            sehari-hari.
+            Kami berkomitmen memberikan pelayanan terbaik kepada pelanggan dengan menyediakan berbagai pilihan produk,
+            mulai dari bahan makanan segar hingga kebutuhan rumah tangga lainnya.
+            Dengan harga terjangkau dan berbagai promo menarik, Risa Plaza Market menjadi pilihan tepat bagi keluarga
+            Anda.
+            Nikmati pengalaman berbelanja yang menyenangkan di Risa Plaza Market dengan suasana yang nyaman dan
+            produk-produk yang selalu segar.
         </p>
     </div>
 
@@ -143,4 +177,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
